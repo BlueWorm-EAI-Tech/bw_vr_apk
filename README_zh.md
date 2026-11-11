@@ -44,7 +44,7 @@ APK 负责采集头显和手柄输入、显示机器人双目视频并发送控�
 
 ```bash
 wget -O "$HOME/Downloads/Quantum.apk" \
-  https://raw.githubusercontent.com/BlueWorm-EAI-Tech/bw_std_vr_apk/main/Quantum.apk
+  https://raw.githubusercontent.com/BlueWorm-EAI-Tech/bw_vr_apk/main/Quantum.apk
 ```
 
 ### 2. 安装 ADB

@@ -48,7 +48,7 @@ behavior of the arms, grippers, head, and mobile base.
 
 ```bash
 wget -O "$HOME/Downloads/Quantum.apk" \
-  https://raw.githubusercontent.com/BlueWorm-EAI-Tech/bw_std_vr_apk/main/Quantum.apk
+  https://raw.githubusercontent.com/BlueWorm-EAI-Tech/bw_vr_apk/main/Quantum.apk
 ```
 
 ### 2. Install ADB
