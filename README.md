@@ -2,6 +2,54 @@
 
 English | [中文](./README_zh.md)
 
+## Quick Install (one click)
+
+Install `Quantum.apk` onto a PICO headset in two steps.
+
+### 1. Connect the headset
+
+- Connect the headset to your computer with a USB cable
+- Enable "Developer Mode → USB Debugging" on the headset
+- Accept the "Allow USB debugging" prompt in the headset
+
+### 2. Run the script
+
+| OS | Command |
+|---|---|
+| Windows | double-click `install_quantum_apk.bat` |
+| Linux / macOS | `./install_quantum_apk.sh` |
+| Any OS with Python 3 | `python install_quantum_apk.py` |
+
+The script will:
+
+- Locate `adb`: `ADB` env var → `PATH` → PICO Developer Center / Android SDK / Unity bundled paths
+- **Download platform-tools automatically** to `~/.quantum_apk_tools` when `adb` is missing — no manual install needed
+- Detect the connected headset (lists models to choose from when several devices are attached)
+- Install the APK; on a signing conflict it explains the cause and asks first, `-y` uninstalls and reinstalls automatically
+- Read back the installed package info and check `isVrApp` (when `false`, the system will not deliver controller input to the app)
+
+### Options
+
+| Option | Description |
+|---|---|
+| `-f, --apk <path>` | APK path, defaults to `Quantum.apk` next to the script |
+| `-d, --device <serial>` | Target a specific device |
+| `-p, --package <name>` | Target package, defaults to `com.BlueWormEAI.Quantum` |
+| `-y, --yes` | Uninstall and reinstall without asking on a signing conflict |
+| `--launch` | Launch the app right after installing |
+| `--no-verify` | Skip the post-install package check |
+| `--no-download` | Never auto-download `adb` |
+| `--force-download` | Ignore any existing `adb` and download platform-tools |
+
+Example:
+
+```bash
+python install_quantum_apk.py -y --launch
+```
+
+> Requires Python 3.6+. On Windows without Python, the `.bat` prints a clear hint.
+> Downloads come from `dl.google.com` with an automatic retry against `dl-ssl.google.com`; if both fail the manual download URL is printed.
+
 ## Overview
 
 `Quantum.apk` is the PICO VR client for BlueWorm robot

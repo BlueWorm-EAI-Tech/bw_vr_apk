@@ -2,6 +2,54 @@
 
 [English](./README.md) | 中文
 
+## 一键安装（推荐）
+
+把 `Quantum.apk` 装到 PICO 头显，两步搞定。
+
+### 1. 连接头显
+
+- 用 USB 线连接头显与电脑
+- 头显里开启「开发者模式 → USB 调试」
+- 弹出「允许 USB 调试」时点允许
+
+### 2. 运行脚本
+
+| 系统 | 命令 |
+|---|---|
+| Windows | 双击 `install_quantum_apk.bat` |
+| Linux / macOS | `./install_quantum_apk.sh` |
+| 任意系统（已装 Python 3） | `python install_quantum_apk.py` |
+
+脚本会自动完成：
+
+- 查找 adb：环境变量 `ADB` → PATH → PICO 开发者中心 / Android SDK / Unity 自带路径
+- **本机没有 adb 时自动下载** Google 官方 platform-tools 到 `~/.quantum_apk_tools`，无需手动安装
+- 识别已连接的头显（多台设备时会列出型号让你选）
+- 安装 APK；遇到签名冲突会说明原因并询问，加 `-y` 自动卸载重装
+- 安装后回读包信息，并检查 `isVrApp` 是否为 `true`（该项为 `false` 时系统不会向应用下发手柄输入）
+
+### 常用参数
+
+| 参数 | 说明 |
+|---|---|
+| `-f, --apk <路径>` | 指定 APK，默认使用脚本同目录的 `Quantum.apk` |
+| `-d, --device <序列号>` | 多台设备时指定目标 |
+| `-p, --package <包名>` | 目标包名，默认 `com.BlueWormEAI.Quantum` |
+| `-y, --yes` | 签名冲突时自动卸载重装，不再询问 |
+| `--launch` | 安装完成后立即启动应用 |
+| `--no-verify` | 跳过安装后的包信息校验 |
+| `--no-download` | 找不到 adb 时不自动下载 |
+| `--force-download` | 忽略已有 adb，强制下载官方 platform-tools |
+
+示例：
+
+```bash
+python install_quantum_apk.py -y --launch
+```
+
+> 前置条件：Python 3.6+。Windows 若没装 Python，双击 `.bat` 会给出明确提示。
+> 下载源为 `dl.google.com`，失败会自动换 `dl-ssl.google.com` 重试；都失败时打印手动下载地址。
+
 ## 包简介
 
 `Quantum.apk` 是 BlueWorm 机器人遥操作软件的 PICO VR 客户端。
