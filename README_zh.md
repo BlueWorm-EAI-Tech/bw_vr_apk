@@ -14,11 +14,11 @@
 
 ### 2. 运行脚本
 
-| 系统 | 命令 |
-|---|---|
-| Windows | 双击 `install_quantum_apk.bat` |
-| Linux / macOS | `./install_quantum_apk.sh` |
-| 任意系统（已装 Python 3） | `python install_quantum_apk.py` |
+| 系统 | 命令 | 依赖 |
+|---|---|---|
+| Windows | 双击 `install_quantum_apk.bat` | **无**——不需要 Python，也不需要预装 adb |
+| Linux / macOS | `./install_quantum_apk.sh` | Python 3.6+ |
+| 任意系统 | `python install_quantum_apk.py` | Python 3.6+ |
 
 脚本会自动完成：
 
@@ -47,7 +47,8 @@
 python install_quantum_apk.py -y --launch
 ```
 
-> 前置条件：Python 3.6+。Windows 若没装 Python，双击 `.bat` 会给出明确提示。
+> 前置条件：Windows 版 `.bat` 无需任何依赖（不需要 Python，也没有 adb 会自动用 PowerShell 下载）。
+> Linux / macOS 需要 Python 3.6+。
 > 下载源为 `dl.google.com`，失败会自动换 `dl-ssl.google.com` 重试；都失败时打印手动下载地址。
 
 ## 包简介

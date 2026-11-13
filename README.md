@@ -14,11 +14,11 @@ Install `Quantum.apk` onto a PICO headset in two steps.
 
 ### 2. Run the script
 
-| OS | Command |
-|---|---|
-| Windows | double-click `install_quantum_apk.bat` |
-| Linux / macOS | `./install_quantum_apk.sh` |
-| Any OS with Python 3 | `python install_quantum_apk.py` |
+| OS | Command | Requires |
+|---|---|---|
+| Windows | double-click `install_quantum_apk.bat` | **nothing** — no Python, no pre-installed adb |
+| Linux / macOS | `./install_quantum_apk.sh` | Python 3.6+ |
+| Any OS | `python install_quantum_apk.py` | Python 3.6+ |
 
 The script will:
 
@@ -47,7 +47,8 @@ Example:
 python install_quantum_apk.py -y --launch
 ```
 
-> Requires Python 3.6+. On Windows without Python, the `.bat` prints a clear hint.
+> The Windows `.bat` needs nothing installed — no Python, and it downloads platform-tools via PowerShell when adb is missing.
+> Linux / macOS require Python 3.6+.
 > Downloads come from `dl.google.com` with an automatic retry against `dl-ssl.google.com`; if both fail the manual download URL is printed.
 
 ## Overview
